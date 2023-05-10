@@ -48,7 +48,8 @@ function getCredential() {
     // const data = { 'authcode': authCode, 'authcredential': btoa("teacher:pin"),'redirectUrl': 'https://kvsonlinetransfer.kvs.gov.in/school/teacher/profile' }
     // const data = { 'authcode': authCode, 'authcredential': btoa("teacher:pin"),'redirectUrl': 'https://pgi.udiseplus.gov.in/school/teacher/profile' }
     const data = { 'authcode': authCode, 'authcredential': btoa("teacher:pin"),'redirectUrl': 'http://localhost:4200/teacher/profile' }
-
+alert("get credential");
+debugger;
     $.ajax({
         url: "http://10.25.26.251:8090/meuser/api/userCradential/get-usercradential", 
         // url: "https://pgi.udiseplus.gov.in/UserService/api/userCradential/get-usercradential",
@@ -152,6 +153,7 @@ function loadScroller() {
     var current = 1;
     var steps = $("fieldset").length;
     setProgressBar(current);
+ 
     $(".next").click(function () {
         current_fs = $(this).parent();
         next_fs = $(this).parent().next();
@@ -229,6 +231,7 @@ $(document).ready(function () {
 
 var current_fs, next_fs, previous_fs; //fieldsets
 var opacity;
+debugger
     $(".next").on("click",function () {
         event.preventDefault()
         current_fs = $(this).parent();

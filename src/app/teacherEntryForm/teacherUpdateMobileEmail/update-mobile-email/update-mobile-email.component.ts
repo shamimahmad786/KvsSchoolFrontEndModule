@@ -73,7 +73,7 @@ export class UpdateMobileEmailComponent implements OnInit {
 
     if (sessionStorage.getItem('authDetails') != null) {
       this.authDetails = JSON.parse(sessionStorage.getItem('authDetails'))
-      this.udise_code = { 'udiseSchCode': this.authDetails.ApplicationDetails[0].business_unit_identity_code }
+      this.udise_code = { 'udiseSchCode': this.authDetails.applicationDetails[0].business_unit_identity_code }
     }
 
     this.formDataResp = this.formData.formData();

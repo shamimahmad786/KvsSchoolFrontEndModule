@@ -55,14 +55,14 @@ export class ProfileComponent implements OnInit {
       this.modalService.open(this.processFlow, { size: 'xl', backdrop: 'static', keyboard: false })
     }
 
-    for (let i = 0; i < JSON.parse(sessionStorage.getItem("authTeacherDetails")).ApplicationDetails.length; i++) {
-      this.kvCode = JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.ApplicationDetails[i].business_unit_type_code;
-      this.businessUnitTypeId = JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.ApplicationDetails[i].business_unit_type_id;
-      if (JSON.parse(sessionStorage.getItem("authTeacherDetails")).ApplicationDetails[i].business_unit_type_id == 5) {
-        if (JSON.parse(sessionStorage.getItem("authTeacherDetails")).ApplicationDetails[i].application_id == environment.applicationId) {
+    for (let i = 0; i < JSON.parse(sessionStorage.getItem("authTeacherDetails")).applicationDetails.length; i++) {
+      this.kvCode = JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.applicationDetails[i].business_unit_type_code;
+      this.businessUnitTypeId = JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.applicationDetails[i].business_unit_type_id;
+      if (JSON.parse(sessionStorage.getItem("authTeacherDetails")).applicationDetails[i].business_unit_type_id == 5) {
+        if (JSON.parse(sessionStorage.getItem("authTeacherDetails")).applicationDetails[i].application_id == environment.applicationId) {
           const data: any = {
             "extcall": "MOE_EXT_MAPPINGDATA",
-            "conditionvalue": [JSON.parse(sessionStorage.getItem("authTeacherDetails")).ApplicationDetails[i].business_unit_type_code]
+            "conditionvalue": [JSON.parse(sessionStorage.getItem("authTeacherDetails")).applicationDetails[i].business_unit_type_code]
           }
           this.getMaster(data, this.businessUnitTypeId);
         }

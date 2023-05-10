@@ -3,6 +3,7 @@ export const environment = {
   production: false,
   //Local
   BASE_URL_DATA_TEACHER: 'http://10.25.26.251:8014/api/teacher/',
+  BASE_URL_DATA_TEACHER_TRANSFER:'http://10.25.26.251:8014/api/transprofile/',
   BASE_URL_DATA_MASTER: 'http://10.25.26.251:8014/api/master/',
   BASE_URL_DATA_QUESTION: 'http://10.25.26.251:8014/api/question/',
   BASE_URL_DATA_SURVEY: 'http://10.25.26.251:8014/api/survey/',
@@ -14,7 +15,7 @@ export const environment = {
   BASE_URL_DATA_DASHBOARD: 'http://10.25.26.251:8014/api/dashboard/',
   BASE_URL_DATA_USER:'http://10.25.26.251:8090/meuser/api/user/',
   BASE_URL_DATA_SURPLUS_TRANSFER:'http://10.25.26.251:8015/api/transfer/',
-  
+  LOGIN_URL_JWT:'http://10.25.26.251:8014/api/login/',
 
 
   LOGOUT_URL:'http://10.25.26.251:8385/meauth/logout?returnTo=http://localhost:4200/',

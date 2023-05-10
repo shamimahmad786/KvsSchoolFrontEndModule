@@ -48,10 +48,10 @@ export class TeacheroutboxComponent implements OnInit {
 
   ngOnInit(): void {
 
-    for (let i = 0; i < JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.ApplicationDetails.length; i++) {
+    for (let i = 0; i < JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.applicationDetails.length; i++) {
       
-      this.kvicons += JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.ApplicationDetails[i].application_id + ",";
-      this.businessUnitTypeId = JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.ApplicationDetails[i].business_unit_type_id;
+      this.kvicons += JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.applicationDetails[i].application_id + ",";
+      this.businessUnitTypeId = JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.applicationDetails[i].business_unit_type_id;
       
     }
 
@@ -156,7 +156,7 @@ export class TeacheroutboxComponent implements OnInit {
       var data = {
         "currentUdiseSchCode": this.udiseSchoolCode,
         "teacherId": tchId,
-        "businessUnitTypeCode": JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.ApplicationDetails[0].business_unit_type_code
+        "businessUnitTypeCode": JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.applicationDetails[0].business_unit_type_code
       }
 
 

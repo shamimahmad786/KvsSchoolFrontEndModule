@@ -924,7 +924,32 @@ saveSanctionedFormData(data){
 getMainDashboard(){
   return this._http.get<any>(environment.BASE_URL_DATA_MASTER+ "getMaster1/1")
 }
-    
+
+
+// New Uploaded Service By abhinesh
+
+saveTransProfile(data){
+  var token = JSON.parse(sessionStorage.getItem('authTeacherDetails'))?.token
+  var headers = new HttpHeaders({
+    'Authorization':token,
+    'Content-Type': 'text/plain; charset=utf-8',
+
+  });
+  
+  return this._http.post<any>(environment.BASE_URL_DATA_TEACHER_TRANSFER + "saveTransProfile", data, {headers});
+}
+ 
+getTransferData(data){
+  var token = JSON.parse(sessionStorage.getItem('authTeacherDetails'))?.token
+  var headers = new HttpHeaders({
+    'Authorization':token,
+    'Content-Type': 'text/plain; charset=utf-8',
+
+  });
+  
+  return this._http.post<any>(environment.BASE_URL_DATA_TEACHER_TRANSFER + "getTransProfile", data, {headers});
+}
+
 }
 
 

@@ -29,9 +29,9 @@ export class AuthGuard implements CanActivate {
     if (sessionStorage.getItem("authTeacherDetails") == null) {
       var returnType = getCredential();
       if (sessionStorage.getItem("authTeacherDetails") != null && JSON.parse(sessionStorage.getItem("authTeacherDetails")).status != 0) {
-        for (let i = 0; i < JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.ApplicationDetails.length; i++) {
-          this.kvicons += JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.ApplicationDetails[i].application_id + ",";
-          this.businessUnitTypeId = JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.ApplicationDetails[i].business_unit_type_id;
+        for (let i = 0; i < JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.applicationDetails.length; i++) {
+          this.kvicons += JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.applicationDetails[i].application_id + ",";
+          this.businessUnitTypeId = JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.applicationDetails[i].business_unit_type_id;
         }
         if (this.businessUnitTypeId == '2') {
           this.router.navigate(['/teacher/nationalDashboard']);
@@ -79,9 +79,9 @@ export class AuthGuard implements CanActivate {
 
     } else if (JSON.parse(sessionStorage.getItem("authTeacherDetails")).status != 0) {
       this.displayInstruction();
-      for (let i = 0; i < JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.ApplicationDetails.length; i++) {
-        this.kvicons += JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.ApplicationDetails[i].application_id + ",";
-        this.businessUnitTypeId = JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.ApplicationDetails[i].business_unit_type_id;
+      for (let i = 0; i < JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.applicationDetails.length; i++) {
+        this.kvicons += JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.applicationDetails[i].application_id + ",";
+        this.businessUnitTypeId = JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.applicationDetails[i].business_unit_type_id;
         this.expirationTime = JSON.parse(sessionStorage.getItem('authTeacherDetails'))?.exp
       }
       if (this.businessUnitTypeId == '2') {

@@ -121,6 +121,19 @@ ul.ulLeft li {
     display: none
 }
 
+/*----------------------- new css add here-----------------------------*/
+
+
+
+
+.stationCode,
+.LIneInde{list-style: none; padding:0px; margin:0px; box-sizing: border-box;}
+.stationCode li { display: inline-table; margin-right: 15px;  width:31%;}
+/* .stationCode li:nth-child(even) {  margin-right: 3%; } */
+.stationName{ font-size:0.9rem ! important; font-weight:600 ! important; letter-spacing: 0.9px ! important;}
+.LIneInde li{ display: table-cell;}
+
+/*----------------------- new css end here-----------------------------*/
 /* #msform input,
 #msform textarea {
     padding: 8px 15px 8px 15px;
@@ -305,7 +318,7 @@ ul.ulLeft li {
     content: "\f0b1"
 }
 
-#progressbar #qualification:before {
+#progressbar #transfer:before {
     font-family: FontAwesome;
     content: "\f02d"
 }

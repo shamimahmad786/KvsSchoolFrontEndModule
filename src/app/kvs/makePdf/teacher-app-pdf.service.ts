@@ -9,18 +9,21 @@ import { DatePipe } from '@angular/common';
   providedIn: 'root'
 })
 export class TeacherAppPdfService {
-
+  teacherTrainingArray: any[] = [];
+  teacherTrainingDisplacementDataArray: any[] = [];
   acdQualificationArray:any;
   profQualificationArray:any;
   trainingReceivedArray:any;
   awardReceivedArray:any;
   workExperienceArray:any;
-
-  acdHead = [['Qualifications', 'Major Subject', 'Minor Subject', 'Board/University', 'School/College', 'Year of Passing']]
+  workExpHead = [['School Name ', 'Shift', 'From','To', 'Nature of Appointment','Position Held','Appointed for Subject','Transfer Ground']]
+  //acdHead = [['Qualifications', 'Major Subject', 'Minor Subject', 'Board/University', 'School/College', 'Year of Passing']]
+  teacherStationChiceHead = [['Station One', 'Station Two', 'Station three', 'Station Four', 'Station Five']]
+  teacherStationChiceDisplacementHead = [['Station One', 'Station Two', 'Station three', 'Station Four', 'Station Five']]
   profHead = [['Qualifications', 'Subject', 'Board/University', 'Institution', 'Year of Passing']]
   awardHead = [['Award Name', 'Year', 'Award By', 'Remark']]
   trainingHead = [['Training Name', 'Year', 'Organised By', 'Place']]
-  workExpHead = [['School Name ', 'Shift', 'From','To', 'Nature of Appointment','Position Held','Appointed for Subject','Transfer Ground']]
+  
 
 
   yPoint: any;
@@ -34,56 +37,75 @@ export class TeacherAppPdfService {
 
 
   }
-
-  testFnc(teacherProfile, kvNameCode, stationNameCode,acdQualification,profQual,awardReceived, trainingReceived, workExperience) {
-
+  testFnc(teacherProfile, kvNameCode, stationNameCode, workExperience,teacherStationChioc) {
+    console.log("pdf data")
+    debugger
+console.log(teacherStationChioc['choiceKv1StationName'])
     const transferGround = new TransferGroundPipe();
-    this.acdQualificationArray = [];
-    for(let i=0; i<acdQualification.length; i++){
-      var acdQualTemp = [];
-      acdQualTemp.push(acdQualification[i]?.degreeName)
-      acdQualTemp.push(acdQualification[i]?.qualificationDegreeMajor)
-      acdQualTemp.push(acdQualification[i]?.qualificationDegreeMinor)
-      acdQualTemp.push(acdQualification[i]?.boardUniversity)
-      acdQualTemp.push(acdQualification[i]?.institution)
-      acdQualTemp.push(acdQualification[i]?.yearOfPassing)
+    var teacherTrainingData= [];
+    teacherTrainingData.push(teacherStationChioc['choiceKv1StationName'])
+    teacherTrainingData.push(teacherStationChioc['choiceKv2StationName'])
+    teacherTrainingData.push(teacherStationChioc['choiceKv3StationName'])
+    teacherTrainingData.push(teacherStationChioc['choiceKv4StationName'])
+    teacherTrainingData.push(teacherStationChioc['choiceKv5StationName'])
+    this.teacherTrainingArray.push(teacherTrainingData)
+    console.log(this.teacherTrainingArray)
 
-      this.acdQualificationArray.push(acdQualTemp)
-    }
 
-    this.profQualificationArray = [];
-    for(let i=0; i<profQual.length; i++){
-      var profQualTemp = [];
-      profQualTemp.push(profQual[i]?.degreeName)
-      profQualTemp.push(profQual[i]?.qualificationDegreeMajor)
-      profQualTemp.push(profQual[i]?.boardUniversity)
-      profQualTemp.push(profQual[i]?.institution)
-      profQualTemp.push(profQual[i]?.yearOfPassing)
 
-      this.profQualificationArray.push(profQualTemp)
-    }
+    var teacherTrainingDisplacementData= [];
+    teacherTrainingDisplacementData.push(teacherStationChioc['displacement1StationName'])
+    teacherTrainingDisplacementData.push(teacherStationChioc['displacement2StationName'])
+    teacherTrainingDisplacementData.push(teacherStationChioc['displacement3StationName'])
+    teacherTrainingDisplacementData.push(teacherStationChioc['displacement4StationName'])
+    teacherTrainingDisplacementData.push(teacherStationChioc['displacement5StationName'])
+    this.teacherTrainingDisplacementDataArray.push(teacherTrainingDisplacementData)
+   // this.acdQualificationArray = [];
+    // for(let i=0; i<acdQualification.length; i++){
+    //   var acdQualTemp = [];
+    //   acdQualTemp.push(acdQualification[i]?.degreeName)
+    //   acdQualTemp.push(acdQualification[i]?.qualificationDegreeMajor)
+    //   acdQualTemp.push(acdQualification[i]?.qualificationDegreeMinor)
+    //   acdQualTemp.push(acdQualification[i]?.boardUniversity)
+    //   acdQualTemp.push(acdQualification[i]?.institution)
+    //   acdQualTemp.push(acdQualification[i]?.yearOfPassing)
 
-    this.awardReceivedArray = [];
-    for(let i=0; i<awardReceived.length; i++){
-      var awardReceivedTemp = [];
-      awardReceivedTemp.push(awardReceived[i]?.awardName)
-      awardReceivedTemp.push(awardReceived[i]?.awardYear)
-      awardReceivedTemp.push(awardReceived[i]?.awardBy)
-      awardReceivedTemp.push(awardReceived[i]?.remarks)
+    //   this.acdQualificationArray.push(acdQualTemp)
+    // }
 
-      this.awardReceivedArray.push(awardReceivedTemp)
-    }
+   // this.profQualificationArray = [];
+    // for(let i=0; i<profQual.length; i++){
+    //   var profQualTemp = [];
+    //   profQualTemp.push(profQual[i]?.degreeName)
+    //   profQualTemp.push(profQual[i]?.qualificationDegreeMajor)
+    //   profQualTemp.push(profQual[i]?.boardUniversity)
+    //   profQualTemp.push(profQual[i]?.institution)
+    //   profQualTemp.push(profQual[i]?.yearOfPassing)
 
-    this.trainingReceivedArray = [];
-    for(let i=0; i<trainingReceived.length; i++){
-      var trainingReceivedTemp = [];
-      trainingReceivedTemp.push(trainingReceived[i]?.trainingName)
-      trainingReceivedTemp.push(trainingReceived[i]?.trainingYear)
-      trainingReceivedTemp.push(trainingReceived[i]?.trainingOrganizedBy)
-      trainingReceivedTemp.push(trainingReceived[i]?.place)
+    //   this.profQualificationArray.push(profQualTemp)
+    // }
 
-      this.trainingReceivedArray.push(trainingReceivedTemp)
-    }
+   // this.awardReceivedArray = [];
+    // for(let i=0; i<awardReceived.length; i++){
+    //   var awardReceivedTemp = [];
+    //   awardReceivedTemp.push(awardReceived[i]?.awardName)
+    //   awardReceivedTemp.push(awardReceived[i]?.awardYear)
+    //   awardReceivedTemp.push(awardReceived[i]?.awardBy)
+    //   awardReceivedTemp.push(awardReceived[i]?.remarks)
+
+    //   this.awardReceivedArray.push(awardReceivedTemp)
+    // }
+
+   // this.trainingReceivedArray = [];
+    // for(let i=0; i<trainingReceived.length; i++){
+    //   var trainingReceivedTemp = [];
+    //   trainingReceivedTemp.push(trainingReceived[i]?.trainingName)
+    //   trainingReceivedTemp.push(trainingReceived[i]?.trainingYear)
+    //   trainingReceivedTemp.push(trainingReceived[i]?.trainingOrganizedBy)
+    //   trainingReceivedTemp.push(trainingReceived[i]?.place)
+
+    //   this.trainingReceivedArray.push(trainingReceivedTemp)
+    // }
 
     this.workExperienceArray = [];
     for(let i=0; i<workExperience.length; i++){
@@ -845,123 +867,69 @@ export class TeacherAppPdfService {
    
 
     //5
-    doc.setTextColor(138, 24, 34);
-    doc.setFontSize(14);
-    doc.setFont('Times-Roman', 'bold');
-    doc.text('Academic Qualification', 15, 100);    
+
+
+
+
+
+
+    
+   // doc.setTextColor(138, 24, 34);
+   // doc.setFontSize(14);
+    //doc.setFont('Times-Roman', 'bold');
+    //doc.text('Academic Qualification', 15, 100);    
 
     (doc as any).autoTable({
-      head: this.acdHead,
-      body: this.acdQualificationArray,
+     // head: this.acdHead,
+     // body: this.acdQualificationArray,
       theme: 'grid',
       startY: 105,
-      didDrawPage: function (data) {
+      // didDrawPage: function (data) {
 
-        const currentDate = new Date();
-        const convtCurrentDate = "(" + currentDate + ")"
+      //  // const currentDate = new Date();
+      //  // const convtCurrentDate = "(" + currentDate + ")"
 
-        // Header
-        doc.addImage("assets/assets/img/kvslogo1.jpg", "JPG", 100, 10, 100, 20);
-        doc.setDrawColor(0, 0, 0);
-        doc.setTextColor(0, 0, 0);
-        doc.setLineWidth(1);
-        doc.line(15, 35, 280, 35);
+      //   // Header
+      //  // doc.addImage("assets/assets/img/kvslogo1.jpg", "JPG", 100, 10, 100, 20);
+      //  // doc.setDrawColor(0, 0, 0);
+      //  // doc.setTextColor(0, 0, 0);
+      //   //doc.setLineWidth(1);
+      //  // doc.line(15, 35, 280, 35);
 
-        // Footer
-        var str = "Page " + data.doc.internal.getNumberOfPages();
+      //   // Footer
+      // //  var str = "Page " + data.doc.internal.getNumberOfPages();
 
-        doc.setFontSize(10);
-        // jsPDF 1.4+ uses getWidth, <1.4 uses .width
-        var pageSize = doc.internal.pageSize;
-        var pageHeight = pageSize.height
-          ? pageSize.height
-          : pageSize.getHeight();
-        doc.text(str, data.settings.margin.left, pageHeight - 10);
+      //  // doc.setFontSize(10);
+      //   // jsPDF 1.4+ uses getWidth, <1.4 uses .width
+      //  // var pageSize = doc.internal.pageSize;
+      //   // var pageHeight = pageSize.height
+      //   //   ? pageSize.height
+      //   //   : pageSize.getHeight();
+      //  // doc.text(str, data.settings.margin.left, pageHeight - 10);
 
-        doc.setTextColor(0, 0, 0);
-        doc.setFontSize(12);
-        doc.setFont('Times-Roman', 'bold');
-        doc.text('Report Generation Date & Time',  data.settings.margin.left+160, pageHeight - 10)
+      //   //doc.setTextColor(0, 0, 0);
+      //  // doc.setFontSize(12);
+      //  // doc.setFont('Times-Roman', 'bold');
+      //   //doc.text('Report Generation Date & Time',  data.settings.margin.left+160, pageHeight - 10)
     
-        doc.setTextColor(0, 0, 0);
-        doc.setFontSize(12);
-        doc.setFont('Times-Roman', 'normal');
-        doc.text(convtCurrentDate,  data.settings.margin.left+160, pageHeight - 5)
+      //  // doc.setTextColor(0, 0, 0);
+      //  // doc.setFontSize(12);
+      // //  doc.setFont('Times-Roman', 'normal');
+      //  // doc.text(convtCurrentDate,  data.settings.margin.left+160, pageHeight - 5)
 
         
-      },
+      // },
 
-      didDrawCell: data => {
-        this.yPoint = data.cursor.y
-      },
-      headStyles: { fillColor: [255, 228, 181], textColor: 0, fontStyle: 'bold' },
-      alternateRowStyles: { fillColor: [255, 251, 245] },
-      valign: 'top',
-      margin: {
-        top: 40,
-        bottom: 15,
-      },
-    })
-
-    let finalY = (doc as any).lastAutoTable.finalY;
-    
-    doc.setTextColor(138, 24, 34);
-    doc.setFontSize(14);
-    doc.setFont('Times-Roman', 'bold');
-    doc.text('Professional Qualification', 15, finalY+10);
-
-    (doc as any).autoTable({
-      head: this.profHead,
-      body: this.profQualificationArray,
-      theme: 'grid',
-      startY: finalY+15,
-      didDrawPage: function (data) {
-
-        const currentDate = new Date();
-        const convtCurrentDate = "(" + currentDate + ")"
-
-        // Header
-        doc.addImage("assets/assets/img/kvslogo1.jpg", "JPG", 100, 10, 100, 20);
-        doc.setDrawColor(0, 0, 0);
-        doc.setTextColor(0, 0, 0);
-        doc.setLineWidth(1);
-        doc.line(15, 35, 280, 35);
-        
-        // Footer
-        var str = "Page " + data.doc.internal.getNumberOfPages();
-
-        doc.setFontSize(10);
-        // jsPDF 1.4+ uses getWidth, <1.4 uses .width
-        var pageSize = doc.internal.pageSize;
-        var pageHeight = pageSize.height
-          ? pageSize.height
-          : pageSize.getHeight();
-        doc.text(str, data.settings.margin.left, pageHeight - 10);
-
-        doc.setTextColor(0, 0, 0);
-        doc.setFontSize(12);
-        doc.setFont('Times-Roman', 'bold');
-        doc.text('Report Generation Date & Time',  data.settings.margin.left+160, pageHeight - 10)
-    
-        doc.setTextColor(0, 0, 0);
-        doc.setFontSize(12);
-        doc.setFont('Times-Roman', 'normal');
-        doc.text(convtCurrentDate,  data.settings.margin.left+160, pageHeight - 5)
-
-        
-      },
-
-      didDrawCell: data => {
-        this.yPoint = data.cursor.y
-      },
-
-      headStyles: { fillColor: [255, 228, 181], textColor: 0, fontStyle: 'bold' },
-      alternateRowStyles: { fillColor: [255, 251, 245] },
-      valign: 'top',
-      margin: {
-        top: 40,
-        bottom: 15,
-      },
+      // didDrawCell: data => {
+      //   //this.yPoint = data.cursor.y
+      // },
+     // headStyles: { fillColor: [255, 228, 181], textColor: 0, fontStyle: 'bold' },
+     // alternateRowStyles: { fillColor: [255, 251, 245] },
+     // valign: 'top',
+      // margin: {
+      //   top: 40,
+      //   bottom: 15,
+      // },
     })
 
 
@@ -970,13 +938,13 @@ export class TeacherAppPdfService {
     doc.setTextColor(138, 24, 34);
     doc.setFontSize(14);
     doc.setFont('Times-Roman', 'bold');
-    doc.text('Awards Received', 15, finalY1+10);
+    doc.text('Work Experience', 15, finalY1);
 
     (doc as any).autoTable({
-      head: this.awardHead,
-      body: this.awardReceivedArray,
+      head: this.workExpHead,
+      body: this.workExperienceArray,
       theme: 'grid',
-      startY: finalY1+15,
+      startY: finalY1+5,
       didDrawPage: function (data) {
 
         const currentDate = new Date();
@@ -1021,10 +989,12 @@ export class TeacherAppPdfService {
       alternateRowStyles: { fillColor: [255, 251, 245] },
       valign: 'top',
       margin: {
-        top: 40,
-        bottom: 15,
+        top: 10,
+        bottom: 5,
       },
     })
+
+
 
 
 
@@ -1033,11 +1003,11 @@ export class TeacherAppPdfService {
     doc.setTextColor(138, 24, 34);
     doc.setFontSize(14);
     doc.setFont('Times-Roman', 'bold');
-    doc.text('Training Received', 15, finalY2+10);
+    doc.text('Order of Station Choice', 15, finalY2+10);
 
     (doc as any).autoTable({
-      head: this.trainingHead,
-      body: this.trainingReceivedArray,
+      head: this.teacherStationChiceHead,
+      body: this.teacherTrainingArray,
       theme: 'grid',
       startY: finalY2+15,
       didDrawPage: function (data) {
@@ -1090,16 +1060,18 @@ export class TeacherAppPdfService {
     })
 
 
+
+
     let finalY3 = (doc as any).lastAutoTable.finalY;
     
     doc.setTextColor(138, 24, 34);
     doc.setFontSize(14);
     doc.setFont('Times-Roman', 'bold');
-    doc.text('Work Experience', 15, finalY3+10);
+    doc.text('Order of Displacement Station Choice', 15, finalY3+10);
 
     (doc as any).autoTable({
-      head: this.workExpHead,
-      body: this.workExperienceArray,
+      head: this.teacherStationChiceDisplacementHead ,
+      body: this.teacherTrainingDisplacementDataArray,
       theme: 'grid',
       startY: finalY3+15,
       didDrawPage: function (data) {
@@ -1150,6 +1122,196 @@ export class TeacherAppPdfService {
         bottom: 15,
       },
     })
+
+
+    
+    // let finalY = (doc as any).lastAutoTable.finalY;
+    
+    // doc.setTextColor(138, 24, 34);
+    // doc.setFontSize(14);
+    // doc.setFont('Times-Roman', 'bold');
+    // doc.text('Professional Qualification', 15, finalY+10);
+
+    // (doc as any).autoTable({
+    //   head: this.profHead,
+    //   body: this.profQualificationArray,
+    //   theme: 'grid',
+    //   startY: finalY+15,
+    //   didDrawPage: function (data) {
+
+    //     const currentDate = new Date();
+    //     const convtCurrentDate = "(" + currentDate + ")"
+
+    //     // Header
+    //     doc.addImage("assets/assets/img/kvslogo1.jpg", "JPG", 100, 10, 100, 20);
+    //     doc.setDrawColor(0, 0, 0);
+    //     doc.setTextColor(0, 0, 0);
+    //     doc.setLineWidth(1);
+    //     doc.line(15, 35, 280, 35);
+        
+    //     // Footer
+    //     var str = "Page " + data.doc.internal.getNumberOfPages();
+
+    //     doc.setFontSize(10);
+    //     // jsPDF 1.4+ uses getWidth, <1.4 uses .width
+    //     var pageSize = doc.internal.pageSize;
+    //     var pageHeight = pageSize.height
+    //       ? pageSize.height
+    //       : pageSize.getHeight();
+    //     doc.text(str, data.settings.margin.left, pageHeight - 10);
+
+    //     doc.setTextColor(0, 0, 0);
+    //     doc.setFontSize(12);
+    //     doc.setFont('Times-Roman', 'bold');
+    //     doc.text('Report Generation Date & Time',  data.settings.margin.left+160, pageHeight - 10)
+    
+    //     doc.setTextColor(0, 0, 0);
+    //     doc.setFontSize(12);
+    //     doc.setFont('Times-Roman', 'normal');
+    //     doc.text(convtCurrentDate,  data.settings.margin.left+160, pageHeight - 5)
+
+        
+    //   },
+
+    //   didDrawCell: data => {
+    //     this.yPoint = data.cursor.y
+    //   },
+
+    //   headStyles: { fillColor: [255, 228, 181], textColor: 0, fontStyle: 'bold' },
+    //   alternateRowStyles: { fillColor: [255, 251, 245] },
+    //   valign: 'top',
+    //   margin: {
+    //     top: 40,
+    //     bottom: 15,
+    //   },
+    // })
+
+
+    // let finalY1 = (doc as any).lastAutoTable.finalY;
+    
+    // doc.setTextColor(138, 24, 34);
+    // doc.setFontSize(14);
+    // doc.setFont('Times-Roman', 'bold');
+    // doc.text('Awards Received', 15, finalY1+10);
+
+    // (doc as any).autoTable({
+    //   head: this.awardHead,
+    //   body: this.awardReceivedArray,
+    //   theme: 'grid',
+    //   startY: finalY1+15,
+    //   didDrawPage: function (data) {
+
+    //     const currentDate = new Date();
+    //     const convtCurrentDate = "(" + currentDate + ")"
+
+    //     // Header
+    //     doc.addImage("assets/assets/img/kvslogo1.jpg", "JPG", 100, 10, 100, 20);
+    //     doc.setDrawColor(0, 0, 0);
+    //     doc.setTextColor(0, 0, 0);
+    //     doc.setLineWidth(1);
+    //     doc.line(15, 35, 280, 35);
+        
+    //     // Footer
+    //     var str = "Page " + data.doc.internal.getNumberOfPages();
+
+    //     doc.setFontSize(10);
+    //     // jsPDF 1.4+ uses getWidth, <1.4 uses .width
+    //     var pageSize = doc.internal.pageSize;
+    //     var pageHeight = pageSize.height
+    //       ? pageSize.height
+    //       : pageSize.getHeight();
+    //     doc.text(str, data.settings.margin.left, pageHeight - 10);
+
+    //     doc.setTextColor(0, 0, 0);
+    //     doc.setFontSize(12);
+    //     doc.setFont('Times-Roman', 'bold');
+    //     doc.text('Report Generation Date & Time',  data.settings.margin.left+160, pageHeight - 10)
+    
+    //     doc.setTextColor(0, 0, 0);
+    //     doc.setFontSize(12);
+    //     doc.setFont('Times-Roman', 'normal');
+    //     doc.text(convtCurrentDate,  data.settings.margin.left+160, pageHeight - 5)
+
+        
+    //   },
+
+    //   didDrawCell: data => {
+    //     this.yPoint = data.cursor.y
+    //   },
+
+    //   headStyles: { fillColor: [255, 228, 181], textColor: 0, fontStyle: 'bold' },
+    //   alternateRowStyles: { fillColor: [255, 251, 245] },
+    //   valign: 'top',
+    //   margin: {
+    //     top: 40,
+    //     bottom: 15,
+    //   },
+    // })
+
+
+
+    // let finalY2 = (doc as any).lastAutoTable.finalY;
+    
+    // doc.setTextColor(138, 24, 34);
+    // doc.setFontSize(14);
+    // doc.setFont('Times-Roman', 'bold');
+    // doc.text('Training Received', 15, finalY2+10);
+
+    // (doc as any).autoTable({
+    //   head: this.trainingHead,
+    //   body: this.trainingReceivedArray,
+    //   theme: 'grid',
+    //   startY: finalY2+15,
+    //   didDrawPage: function (data) {
+
+    //     const currentDate = new Date();
+    //     const convtCurrentDate = "(" + currentDate + ")"
+
+    //     // Header
+    //     doc.addImage("assets/assets/img/kvslogo1.jpg", "JPG", 100, 10, 100, 20);
+    //     doc.setDrawColor(0, 0, 0);
+    //     doc.setTextColor(0, 0, 0);
+    //     doc.setLineWidth(1);
+    //     doc.line(15, 35, 280, 35);
+        
+    //     // Footer
+    //     var str = "Page " + data.doc.internal.getNumberOfPages();
+
+    //     doc.setFontSize(10);
+    //     // jsPDF 1.4+ uses getWidth, <1.4 uses .width
+    //     var pageSize = doc.internal.pageSize;
+    //     var pageHeight = pageSize.height
+    //       ? pageSize.height
+    //       : pageSize.getHeight();
+    //     doc.text(str, data.settings.margin.left, pageHeight - 10);
+
+    //     doc.setTextColor(0, 0, 0);
+    //     doc.setFontSize(12);
+    //     doc.setFont('Times-Roman', 'bold');
+    //     doc.text('Report Generation Date & Time',  data.settings.margin.left+160, pageHeight - 10)
+    
+    //     doc.setTextColor(0, 0, 0);
+    //     doc.setFontSize(12);
+    //     doc.setFont('Times-Roman', 'normal');
+    //     doc.text(convtCurrentDate,  data.settings.margin.left+160, pageHeight - 5)
+
+        
+    //   },
+
+    //   didDrawCell: data => {
+    //     this.yPoint = data.cursor.y
+    //   },
+
+    //   headStyles: { fillColor: [255, 228, 181], textColor: 0, fontStyle: 'bold' },
+    //   alternateRowStyles: { fillColor: [255, 251, 245] },
+    //   valign: 'top',
+    //   margin: {
+    //     top: 40,
+    //     bottom: 15,
+    //   },
+    // })
+
+
 
     //Save
     doc.save(teacherProfile?.teacherName+'.pdf')

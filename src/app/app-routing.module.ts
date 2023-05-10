@@ -28,11 +28,11 @@ import { TeachersDetailComponent } from './teacherEntryForm/teachersDetail/teach
 import { UpdateMobileEmailComponent } from './teacherEntryForm/teacherUpdateMobileEmail/update-mobile-email/update-mobile-email.component';
 import { ReportGridComponent } from './reports/report-grid/report-grid.component';
 import { KvTchSanctionedPostComponent } from './kvs/sanctionedPost/kv-tch-sanctioned-post/kv-tch-sanctioned-post.component';
-
+import {LoginComponent} from './login/login.component';
 const routes: Routes = [
   {path:'', component: MainPageComponent},
   {path:'tDashboard', component: TDashboardComponent},
-  
+  {path:'login', component:LoginComponent},
   {path: 'teacher', component:TeacherComponent,canActivate: [AuthGuard], children:[
       {path:'', component: ProfileComponent},
       {path:'profile', component: ProfileComponent},

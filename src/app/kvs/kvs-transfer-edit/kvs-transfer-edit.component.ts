@@ -358,8 +358,8 @@ export class KvsTransferEditComponent implements OnInit {
     this.getAllMaster();
     this.getStateMaster();
 
-    for (let i = 0; i < JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.ApplicationDetails.length; i++) {
-      this.kvCode = JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.ApplicationDetails[i].business_unit_type_code;
+    for (let i = 0; i < JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.applicationDetails.length; i++) {
+      this.kvCode = JSON.parse(sessionStorage.getItem("authTeacherDetails"))?.applicationDetails[i].business_unit_type_code;
       this.getTransferBasicProfileByTchId()
       this.getSchoolDetailsByKvCode();
     }
@@ -706,7 +706,8 @@ export class KvsTransferEditComponent implements OnInit {
 
 
   setReceivedData(setData) {
-
+    console.log("dfssssssssssssssssssssssssssss")
+console.log("setData")
     const data = {
       "applicationId": environment.applicationId,
       "teacherTypeId": setData.lastPromotionPositionType
@@ -1280,6 +1281,7 @@ export class KvsTransferEditComponent implements OnInit {
         if (res.status == 1 || res.status == '1') {
           this.responseData = res.response;
           this.transferStatusOperation = res.response.transferStatus;
+          debugger
           this.setReceivedData(this.responseData)
           // nextTempClick();
           this.formStatusLocale = 'TRE'

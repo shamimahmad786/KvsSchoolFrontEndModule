@@ -17,7 +17,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { FormDataService } from './teacherEntryForm/service/internalService/form-data.service';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TDashboardComponent } from './tDashboard/t-dashboard/t-dashboard.component';
-import { LoginComponent } from './tDashboard/t-dashboard/login/login/login.component';
+//import { LoginComponent } from './tDashboard/t-dashboard/login/login/login.component';
+
 import { TeacherComponent } from './teacherEntryForm/teacher.component';
 import { TeacherEntryFormComponent } from './teacherEntryForm/teacher-entry-form/teacher-entry-form.component';
 import { TModuleModule } from './teacherModule/t-module/t-module.module';
@@ -72,6 +73,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { KvTchSanctionedPostComponent } from './kvs/sanctionedPost/kv-tch-sanctioned-post/kv-tch-sanctioned-post.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { LoginComponent } from './login/login.component';
 // import { MatStepperModule} from '@angular/material/stepper';
 // import { MatCardModule} from '@angular/material/card';
 // import { MatFormFieldModule } from '@angular/material/form-field';
@@ -156,7 +158,6 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
     MatPaginatorModule,
     FormsModule,
     RxReactiveFormsModule,
-    
     // HttpClientModule,
     // HttpClient,
     TModuleModule,
